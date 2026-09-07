@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 
 const fruitImage = '/images/ChatGPT Image Sep 7, 2026, 11_07_01 AM.png';
+const whatsappNumber = '919837774919';
 
 const businessTypes = [
   'Distributor', 'Wholesaler', 'Retailer', 'Supermarket',
@@ -42,8 +43,26 @@ export default function DistributorApplicationPage() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (_data: FormData) => {
-    await new Promise((r) => setTimeout(r, 800));
+  const onSubmit = (data: FormData) => {
+    const message = [
+      'New Distribution Enquiry - Crunchlisious',
+      '',
+      `Full Name: ${data.fullName}`,
+      `Business Name: ${data.businessName}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `City: ${data.city}`,
+      `State: ${data.state}`,
+      `Business Type: ${data.businessType}`,
+      `Years in Business: ${data.yearsInBusiness || 'Not provided'}`,
+      `Distribution Network: ${data.distributionNetwork || 'Not provided'}`,
+      `Current Products: ${data.currentProducts || 'Not provided'}`,
+      `Expected Market / Area: ${data.expectedMarket || 'Not provided'}`,
+      `Website / Business Profile: ${data.website || 'Not provided'}`,
+      `Message: ${data.message || 'Not provided'}`,
+    ].join('\n');
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
   };
 

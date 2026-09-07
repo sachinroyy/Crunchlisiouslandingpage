@@ -68,6 +68,9 @@ h2 { font-size: clamp(53px, 6.7vw, 92px); }
 .tone-apple { background-position: 100% 75%; }
 .tone-banana { background-position: 41% 8%; }
 .tone-apricot { background-position: 8% 4%; }
+.tone-onion { background-position: 50% 30%; }
+.tone-garlic { background-position: 50% 25%; }
+.tone-beetroot { background-position: 50% 35%; }
 .tone-mixed { background-position: 83% 48%; }
 .product-details { padding-top: 17px; border-top: 1px solid var(--line); margin-top: 13px; }
 .product-details h3, .benefit h3, .process-step h3, .dist-benefit h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
@@ -224,6 +227,11 @@ blockquote footer { color: #768077; font-size: 10px; letter-spacing: .12em; text
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1.2fr; gap: 80px; padding-bottom: 75px; }
 .footer-brand p { max-width: 240px; color: rgba(238,230,217,.6); font-size: 13px; line-height: 1.7; margin-top: 25px; }
 .footer-links, .footer-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.footer-contact { padding-left: 28px; border-left: 1px solid rgba(238,230,217,.18); }
+.footer-brand p { max-width: 290px; }
+.footer-signature { display: block; margin-top: 20px; color: var(--orange); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.footer-ceo { margin: -2px 0 2px; color: rgba(238,230,217,.55); font-size: 12px; letter-spacing: .04em; }
+.footer-ceo strong { color: #eee6d9; font-weight: 500; }
 .footer-links h3, .footer-contact h3 { margin: 0 0 8px; color: var(--orange); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
 .footer-links a, .footer-contact a { display: flex; align-items: center; gap: 10px; color: rgba(238,230,217,.75); font-size: 13px; }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(238,230,217,.15); color: rgba(238,230,217,.45); font-size: 10px; letter-spacing: .05em; }
@@ -273,7 +281,7 @@ blockquote footer { color: #768077; font-size: 10px; letter-spacing: .12em; text
   .container { width: calc(100% - 40px); }
   .site-header { height: 84px; }
   .nav-inner {
-    height: 62px;
+    height: 82px;
     margin-top: 10px;
     padding: 0 16px;
     border-radius: 14px;
@@ -288,14 +296,14 @@ blockquote footer { color: #768077; font-size: 10px; letter-spacing: .12em; text
   }
   .brand-logo {
     display: block;
-    height: 46px;
+    height: 78px;
     width: auto;
-    max-width: 190px;
+    max-width: 321px;
     margin: 0 auto;
   }
   .nav-cta { display: none; }
   .menu-toggle { display: grid; place-items: center; border: 0; background: transparent; color: inherit; cursor: pointer; }
-  .main-nav { display: none; position: absolute; top: 72px; left: 20px; right: 20px; padding: 22px; border: 1px solid rgba(38,57,42,.14); border-radius: 14px; background: rgba(245,241,233,.92); color: var(--forest); flex-direction: column; align-items: flex-start; gap: 22px; box-shadow: 0 15px 30px rgba(0,0,0,.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .main-nav { display: none; position: absolute; top: 82px; left: 20px; right: 20px; padding: 22px; border: 1px solid rgba(38,57,42,.14); border-radius: 14px; background: rgba(245,241,233,.92); color: var(--forest); flex-direction: column; align-items: flex-start; gap: 22px; box-shadow: 0 15px 30px rgba(0,0,0,.12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
   .main-nav.is-open { display: flex; }
   .main-nav a { opacity: 1; }
   .mobile-contact { display: inline-flex !important; align-items: center; gap: 8px; color: var(--orange) !important; }
@@ -340,9 +348,11 @@ blockquote footer { color: #768077; font-size: 10px; letter-spacing: .12em; text
   .testimonial-grid { grid-template-columns: 1fr; gap: 20px; }
   blockquote p { margin: 25px 0 30px; }
   .quote-mark { font-size: 90px; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 45px 25px; padding-bottom: 45px; }
-  .footer-brand { grid-column: span 2; }
-  .footer-bottom { gap: 15px; flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr; gap: 45px; padding-bottom: 45px; text-align: center; }
+  .footer-brand, .footer-links, .footer-contact { grid-column: auto; align-items: center; }
+  .footer-brand p { margin-left: auto; margin-right: auto; }
+  .footer-contact { padding-left: 0; border-left: 0; }
+  .footer-bottom { gap: 15px; flex-direction: column; align-items: center; text-align: center; }
 
   /* CAREERS + DISTRIBUTOR MOBILE */
   .careers-section, .distributor-section { padding: 90px 0; }

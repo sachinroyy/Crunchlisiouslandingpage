@@ -10,10 +10,10 @@ import {
   Check,
   CheckCircle2,
   Leaf,
-  Upload,
 } from 'lucide-react';
 
 const fruitImage = '/images/ChatGPT Image Sep 7, 2026, 11_07_01 AM.png';
+const whatsappNumber = '919837774919';
 
 const positions = [
   'Sales', 'Marketing', 'Production', 'Quality Control',
@@ -27,7 +27,6 @@ const schema = z.object({
   position: z.string().min(1, 'Please select a position'),
   location: z.string().min(2, 'Please enter your location'),
   yearsExperience: z.string().optional(),
-  resume: z.string().min(1, 'Please upload your resume'),
   linkedin: z.string().optional(),
   coverMessage: z.string().optional(),
 });
@@ -36,26 +35,27 @@ type FormData = z.infer<typeof schema>;
 
 export default function JobApplicationPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [fileName, setFileName] = useState('');
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (_data: FormData) => {
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
-  };
+  const onSubmit = (data: FormData) => {
+    const message = [
+      'New Careers Application - Crunchlisious',
+      '',
+      `Full Name: ${data.fullName}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `Position: ${data.position}`,
+      `Location: ${data.location}`,
+      `Years of Experience: ${data.yearsExperience || 'Not provided'}`,
+      `LinkedIn / Portfolio: ${data.linkedin || 'Not provided'}`,
+      `Cover Message: ${data.coverMessage || 'Not provided'}`,
+    ].join('\n');
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-      if (!allowed.includes(file.type) && !/\.(pdf|doc|docx)$/i.test(file.name)) {
-        return;
-      }
-      setFileName(file.name);
-    }
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -126,18 +126,6 @@ export default function JobApplicationPage() {
               <label htmlFor="yearsExperience">Years of Experience</label>
               <input id="yearsExperience" type="text" {...register('yearsExperience')} placeholder="e.g. 3 years" />
             </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="resume">Resume / CV Upload <span className="req">*</span></label>
-            <div className="file-upload">
-              <input id="resume" type="file" accept=".pdf,.doc,.docx" {...register('resume')} onChange={(e) => { register('resume').onChange(e); handleFile(e); }} className="file-input" />
-              <label htmlFor="resume" className="file-label">
-                <Upload size={18} />
-                <span>{fileName || 'Choose a file (PDF, DOC, DOCX)'}</span>
-              </label>
-            </div>
-            {errors.resume && <span className="field-error">{errors.resume.message}</span>}
           </div>
 
           <div className="field">

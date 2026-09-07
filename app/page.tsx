@@ -10,6 +10,7 @@ import {
   Leaf,
   Menu,
   Mail,
+  MapPin,
   Phone,
   Sparkles,
   Sun,
@@ -30,7 +31,11 @@ const products = [
   ['Dried Apple', 'Light, crisp and naturally satisfying.', '/images/Dried%20Apple.webp', 'apple'],
   ['Banana Chips', 'Golden, crunchy and full of familiar banana goodness.', '/images/Banana.webp', 'banana'],
   ['Dried Apricot', 'Soft, naturally sweet and packed with fruity flavor.', '/images/Dried%20Apricot.webp', 'apricot'],
-  ['Mixed Fruit', 'A colorful mix of delicious dried fruit favorites.', '/images/Mixed%20Fruit.webp', 'mixed'],
+  ['Onion Flakes', 'Crisp, savory onion pieces with a bold aromatic finish.', 'images/onion.webp', 'onion'],
+  ['Garlic Flakes', 'Aromatic, savory and perfect for quick flavor boosts.', 'images/garlic.webp', 'garlic'],
+  ['Beetroot Powder', 'Naturally vibrant color with an earthy, sweet finish.', 'images/beetroot.webp', 'beetroot'],
+  ['Okara Chips', 'Light, crunchy and naturally satisfying with a wholesome bite.', 'images/okra.webp', 'mixed'],
+  ['Mixed Fruit', 'A colorful mix of delicious dried fruit favorites.', '/images/Mixed.webp', 'mixed'],
 ];
 
 type Benefit = [string, string, string, LucideIcon];
@@ -46,7 +51,7 @@ const steps = [
   ['01', 'SELECT', 'Quality fruits are carefully selected for taste, texture and freshness.', 'images/select.webp'],
   ['02', 'PREPARE', 'Each fruit is washed, sliced and carefully prepared for drying.', 'images/prepare.webp'],
   ['03', 'DRY', 'The fruit is gently dried to lock in natural flavor and a satisfying crunch.', 'images/dry.webp'],
-  ['04', 'PACK', 'Finished fruit is packed with care to preserve freshness and premium quality.', 'images/mixed fruit.webp'],
+  ['04', 'PACK', 'Finished fruit is packed with care to preserve freshness and premium quality.', 'images/mixed.webp'],
 ];
 
 const distributorBenefits = [
@@ -78,7 +83,7 @@ export default function Home() {
           <Logo />
           <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Primary navigation">
             {navItems.map((item) => (
-              <a key={item} href={item === 'Home' ? '/#top' : item === 'Contact' ? '/#contact' : `/#${item.toLowerCase().replaceAll(' ', '-')}`} onClick={closeMenu}>{item}</a>
+              <a key={item} href={item === 'Home' ? '/#top' : item === 'Contact' ? '/#contact' : item === 'Why Us' ? '/#about' : `/#${item.toLowerCase().replaceAll(' ', '-')}`} onClick={closeMenu}>{item}</a>
             ))}
             <a className="mobile-contact" href="/#partner" onClick={closeMenu}>Partner With Us <ArrowRight size={16} /></a>
           </nav>
@@ -95,12 +100,12 @@ export default function Home() {
         <div className="container hero-content">
           <p className="eyebrow light">NATURALLY DRIED <span /></p>
           <h1 id="hero-title">Make food<br /><em>delicious.</em></h1>
-          <p className="hero-copy">Premium dried fruits made from carefully selected fruit, naturally transformed into delicious everyday snacks.</p>
+          <p className="hero-copy">Premium dried fruits and vegetables made from carefully selected produce, naturally transformed into delicious everyday snacks.</p>
           <div className="hero-actions">
             <a className="button button-orange" href="/#products">Discover our products <ArrowRight size={17} /></a>
             <a className="text-link light" href="/#about">Our story <ArrowDownRight size={17} /></a>
           </div>
-          <div className="hero-note"><span>01</span><span className="note-line" /><span>Real fruit. Thoughtfully made.</span></div>
+          {/* <div className="hero-note"><span>01</span><span className="note-line" /><span>Real produce. Thoughtfully made.</span></div> */}
         </div>
         <a href="/#collection" className="scroll-cue" aria-label="Scroll to collection"><span>Scroll to explore</span><ChevronDown size={18} /></a>
       </section>
@@ -117,11 +122,11 @@ export default function Home() {
 
       <section className="products-section" id="products">
         <div className="container">
-          <div className="section-topline"><p className="eyebrow">THE COLLECTION <span /></p><span className="section-count">08 / 08</span></div>
+          <div className="section-topline"><p className="eyebrow">THE COLLECTION <span /></p><span className="section-count">{String(products.length).padStart(2, '0')} / {String(products.length).padStart(2, '0')}</span></div>
           <div className="products-grid">
             {products.map(([name, description, image, tone], index) => (
               <article className="product-item" key={name}>
-                <div className={`product-image tone-${tone}`} style={{ backgroundImage: `url("${image}")` }}><span className="product-number">0{index + 1}</span><a href="/#contact" className="product-arrow" aria-label={`Explore ${name}`}><ArrowUpRight /></a></div>
+                <div className={`product-image tone-${tone}`} style={{ backgroundImage: `url("${image}")` }}><span className="product-number">{String(index + 1).padStart(2, '0')}</span><a href="/#contact" className="product-arrow" aria-label={`Explore ${name}`}><ArrowUpRight /></a></div>
                 <div className="product-details"><h3>{name}</h3><p>{description}</p></div>
               </article>
             ))}
@@ -223,9 +228,9 @@ export default function Home() {
 
       <section className="testimonials-section"><div className="container"><div className="section-topline"><div><p className="eyebrow">CUSTOMER LOVE <span /></p><h2>Loved for<br /><em>the crunch.</em></h2></div><span className="quote-mark">&ldquo;</span></div><div className="testimonial-grid">{['Fresh, flavorful and genuinely delicious.', 'Beautiful quality with amazing natural fruit flavor.', 'A simple snack that feels special.'].map((quote, index) => <blockquote key={quote}><span>0{index + 1}</span><p>&ldquo;{quote}&rdquo;</p><footer>Crunchlisious friend</footer></blockquote>)}</div></div></section>
 
-      <section className="final-cta" id="contact" style={{ backgroundImage: `linear-gradient(rgba(35, 53, 36, .78), rgba(35, 53, 36, .78)), url("${fruitImage}")` }}><div className="container"><p className="eyebrow light">A LITTLE MORE DELICIOUS <span /></p><h2>Make food<br /><em>delicious.</em></h2><p>Discover the naturally delicious world of Crunchlisious.</p><div className="hero-actions"><a className="button button-orange" href="mailto:hello@crunchlisious.com">Get in touch <ArrowRight size={17} /></a><a className="text-link light" href="/#products">Explore products <ArrowRight size={17} /></a></div></div></section>
+      <section className="final-cta" id="contact" style={{ backgroundImage: `linear-gradient(rgba(35, 53, 36, .78), rgba(35, 53, 36, .78)), url("${fruitImage}")` }}><div className="container"><p className="eyebrow light">A LITTLE MORE DELICIOUS <span /></p><h2>Make food<br /><em>delicious.</em></h2><p>Discover the naturally delicious world of Crunchlisious.</p><div className="hero-actions"><a className="button button-orange" href="https://wa.me/919837774919?text=Hello%20Crunchlisious%2C%20I%20would%20like%20to%20get%20in%20touch.">Get in touch <ArrowRight size={17} /></a><a className="text-link light" href="/#products">Explore products <ArrowRight size={17} /></a></div></div></section>
 
-      <footer className="site-footer"><div className="container footer-top"><div className="footer-brand"><Logo /><p>Premium naturally dried fruits made with care and a passion for deliciousness.</p></div><div className="footer-links"><h3>Explore</h3><a href="/#top">Home</a><a href="/#about">About</a><a href="/#products">Products</a><a href="/#our-process">Our process</a><a href="/#careers">Careers</a><a href="/#partner">Partners</a></div><div className="footer-contact"><h3>Say hello</h3><a href="mailto:hello@crunchlisious.com"><Mail size={16} /> hello@crunchlisious.com</a><a href="tel:+10000000000"><Phone size={16} /> +1 000 000 0000</a><a href="/#contact"><Instagram size={16} /> Instagram</a></div></div><div className="container footer-bottom"><span>© 2026 Crunchlisious. All rights reserved.</span><span>Made for delicious moments.</span></div></footer>
+      <footer className="site-footer"><div className="container footer-top"><div className="footer-brand"><Logo /><p>Premium naturally dried fruits and vegetables made with care and a passion for deliciousness.</p><span className="footer-signature">Naturally made. Thoughtfully shared.</span></div><div className="footer-links"><h3>Explore</h3><a href="/#top">Home</a><a href="/#about">About</a><a href="/#products">Products</a><a href="/#our-process">Our process</a><a href="/#careers">Careers</a><a href="/#partner">Partners</a></div><div className="footer-contact"><h3>Say hello</h3><p className="footer-ceo">CEO <strong>Deepanshu Jain</strong></p><a href="mailto:crunchlisious@gmail.com"><Mail size={16} /> crunchlisious@gmail.com</a><a href="tel:+919873774919"><Phone size={16} /> +91 98737 74919</a><a href="/#contact"><MapPin size={16} /> Rohini, Sector 4, Delhi</a><a href="/#contact"><Instagram size={16} /> Instagram</a></div></div><div className="container footer-bottom"><span>© 2026 Crunchlisious. All rights reserved.</span><span>Made for delicious moments.</span></div></footer>
     </main>
   );
 }

@@ -34,7 +34,7 @@ const products = [
   ['Onion Flakes', 'Crisp, savory onion pieces with a bold aromatic finish.', 'images/onion.webp', 'onion'],
   ['Garlic Flakes', 'Aromatic, savory and perfect for quick flavor boosts.', 'images/garlic.webp', 'garlic'],
   ['Beetroot Powder', 'Naturally vibrant color with an earthy, sweet finish.', 'images/beetroot.webp', 'beetroot'],
-  ['Okara Chips', 'Light, crunchy and naturally satisfying with a wholesome bite.', 'images/okra.webp', 'mixed'],
+  ['Okara Chips', 'Light, crunchy and naturally satisfying with a wholesome bite.', 'images/Okra.webp', 'mixed'],
   ['Mixed Fruit', 'A colorful mix of delicious dried fruit favorites.', '/images/Mixed.webp', 'mixed'],
 ];
 
@@ -51,7 +51,7 @@ const steps = [
   ['01', 'SELECT', 'Quality fruits are carefully selected for taste, texture and freshness.', 'images/select.webp'],
   ['02', 'PREPARE', 'Each fruit is washed, sliced and carefully prepared for drying.', 'images/prepare.webp'],
   ['03', 'DRY', 'The fruit is gently dried to lock in natural flavor and a satisfying crunch.', 'images/dry.webp'],
-  ['04', 'PACK', 'Finished fruit is packed with care to preserve freshness and premium quality.', 'images/mixed.webp'],
+  ['04', 'PACK', 'Finished fruit is packed with care to preserve freshness and premium quality.', 'images/Mixed.webp'],
 ];
 
 const distributorBenefits = [

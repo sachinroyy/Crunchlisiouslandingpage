@@ -8,21 +8,8 @@ const display = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '600'],
 export const metadata: Metadata = {
   title: 'Crunchlisious | Make Food Delicious',
   description: 'Premium naturally dried fruits made with care and a passion for deliciousness.',
-  openGraph: {
-    images: [
-      {
-        url: 'https://bolt.new/static/og_default.png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: [
-      {
-        url: 'https://bolt.new/static/og_default.png',
-      },
-    ],
-  },
+ 
+ 
 };
 
 export default function RootLayout({

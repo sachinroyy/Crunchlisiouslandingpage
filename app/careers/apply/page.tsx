@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 const fruitImage = '/images/ChatGPT Image Sep 7, 2026, 11_07_01 AM.png';
-const whatsappNumber = '919837774919';
+const whatsappNumber = '919873774919';
 
 const positions = [
   'Sales', 'Marketing', 'Production', 'Quality Control',
